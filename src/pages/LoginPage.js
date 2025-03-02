@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ADDRESS } from '../constants/constants';
 
@@ -29,14 +29,9 @@ const LoginPage = () => {
       console.log(result);
       navigate('/main');
     } else {
-      console.log(response);
       console.log('로그인 실패!');
     }
   };
-
-  useEffect(() => {
-    console.log(typeof password);
-  }, [password]);
 
   return (
     <div className='flex items-center justify-center min-h-screen bg-gray-100'>
