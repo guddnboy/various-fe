@@ -8,10 +8,6 @@ const MainPage = () => {
   const [image, setImage] = useState(null);
   const [fine_total, setFine_total] = useState('0');
 
-  const handleLogout = () => {
-    navigate('/');
-  };
-
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -19,11 +15,27 @@ const MainPage = () => {
     }
   };
 
+  // [FIXME] userID 값을 이용하여 API로 수정 필요
   const handleUpload = () => {
     if (image) {
       console.log('업로드할 이미지:', image);
     } else {
       console.log('이미지를 선택해주세요.');
+    }
+  };
+
+  const handleLogout = async () => {
+    const response = await fetch(`${ADDRESS}/auth/logout`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+    });
+    if (response.ok) {
+      alert('오늘도 화이팅!');
+      navigate('/');
+    } else {
+      alert('다시 시도해주세요!');
     }
   };
 
@@ -39,7 +51,7 @@ const MainPage = () => {
       const result = await response.json();
       setFine_total(result.total_fine);
     } else {
-      console.error('불러오기 실패');
+      alert('불러오기 실패');
     }
   };
 
@@ -48,7 +60,7 @@ const MainPage = () => {
   }, []);
 
   return (
-    <div className='flex flex-col min-h-screen bg-gray-100'>
+    <div className='flex flex-col justify-center min-h-screen bg-gray-100'>
       <div className='flex flex-col items-center justify-center'>
         <h2 className='text-xl font-medium mb-4'>지금까지 쌓인 벌금</h2>
         <div className='text-2xl font-bold text-blue-500'>

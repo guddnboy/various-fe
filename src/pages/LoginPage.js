@@ -29,7 +29,7 @@ const LoginPage = () => {
       console.log(result);
       navigate('/main');
     } else {
-      console.log('로그인 실패!');
+      alert('다시 로그인 해주세요!');
     }
   };
 
