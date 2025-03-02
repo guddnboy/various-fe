@@ -49,12 +49,6 @@ const MainPage = () => {
 
   return (
     <div className='flex flex-col min-h-screen bg-gray-100'>
-      <button
-        onClick={handleLogout}
-        className='bg-red-200 text-white px-4 py-2 rounded-md hover:bg-red-600 transition'
-      >
-        로그아웃
-      </button>
       <div className='flex flex-col items-center justify-center'>
         <h2 className='text-xl font-medium mb-4'>지금까지 쌓인 벌금</h2>
         <div className='text-2xl font-bold text-blue-500'>
@@ -86,12 +80,24 @@ const MainPage = () => {
             />
           </div>
         )}
-        <button
-          onClick={handleUpload}
-          className='bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition'
-        >
-          업로드
-        </button>
+        <div className='flex gap-4'>
+          <div>
+            <button
+              onClick={handleUpload}
+              className='bg-blue-300 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition'
+            >
+              업로드
+            </button>
+          </div>
+          <div>
+            <button
+              onClick={handleLogout}
+              className='bg-red-200 text-white px-4 py-2 rounded-md hover:bg-red-600 transition'
+            >
+              로그아웃하고 공부하러 가기
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
